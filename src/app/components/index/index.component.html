@@ -1,0 +1,68 @@
+<div class="container mt-3" *ngIf="status==false">
+    <div class="card">
+        <div class="card-header text-center">
+            Ingresa la información que se te pide para poder evaluar su estado.
+        </div>
+        <form #formu="ngForm">
+            <div class="card-body">
+                <div style="width: 50%; height: auto; margin: auto;">
+                    <label for="nivel" class="form-label">Nivel de azúcar actual</label>
+                    <input type="number"
+                            class="form-control"
+                            id="nivel"
+                            name="glass"
+                            [(ngModel)]="aux.nivel"
+                            placeholder="ejemplo: 170"
+                            required>
+
+                    <label for="edad" class="form-label">Edad</label>
+                    <input type="number"
+                            class="form-control"
+                            id="edad"
+                            name="age"
+                            [(ngModel)]="aux.edad"
+                            placeholder="ejemplo: 35"
+                            required>
+                </div>
+            </div>
+            <div class="card-footer text-center">
+                <button [disabled]="formu.invalid"
+                        class="btn btn-primary"
+                        (click)="evaluar(formu)">Evaluar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="status==false">
+    <div class="card bg-dark text-white">
+        <div class="card-header text-center">Esperando datos para evaluar estado</div>
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="status==true">
+
+    <div class="card">
+        <div class="card-header text-center bg-dark text-white">Los resultados son:</div>
+        <div class="card-body">
+            <div style="margin: auto; width: 50%;">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Nivel de azúcar:</h5>
+                        <p class="card-text">{{aux.nivel}}</p>
+                        <h5 class="card-title mt-2">Edad:</h5>
+                        <p class="card-text">{{aux.edad}}</p>
+                        <h5 class="card-title">Estado</h5>
+                        <p class="card-text">{{aux.esta}}</p>
+                        <h5 class="card-title">Diagnostico</h5>
+                        <p class="card-text">{{aux.diag}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container text-center mt-3">
+        <button class="btn btn-secondary" type="reset" (click)="reset()">Nuevo diagnostico</button>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div class="container mt-3">
+    <div class="card">
+        <div class="card-header text-center">Bienvenido</div>
+        <div class="card-body">
+            <p class="card-text">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Ut exercitationem nam, aut voluptatem veniam libero, dolorem
+                odio in consectetur minima, distinctio nobis nisi delectus?
+                Ratione ea sed eum natus? Esse?
+            </p>
+        </div>
+        <div class="card-footer text-muted text-center">
+            Derechos reservados | 2021
+        </div>
+    </div>
+</div>
+
+<p class="p text-center mt-3">Ultimos 5 diagnosticos</p>
+
+<div class="container mt-3" *ngIf="diags.length==0">
+    <div class="card bg-dark text-white">
+        <div class="card-header text-center">No se pudo obtener la información</div>
+    </div>
+</div>
+
+<div class="container mt-3" *ngIf="diags.length!=0">
+    <table class="table table-striped">
+        <thead class="table-dark">
+            <tr>
+                <th scope="col">Id Diagnostico</th>
+                <th scope="col">Nivel de glucosa</th>
+                <th scope="col">Edad</th>
+                <th scope="col">Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of diags">
+                <th scope="row">{{item.id}}</th>
+                <td>{{item.nivel}}</td>
+                <td>{{item.edad}}</td>
+                <td>{{item.esta}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<router-outlet></router-outlet>
